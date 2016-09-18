@@ -1,0 +1,27 @@
+{
+  "name": "js.pdf",
+  "version": "0.0.1",
+  "description": "Print js objects to pdf files",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node_modules/.bin/mocha ./**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/manutero/js.pdf.git"
+  },
+  "author": "Manu Artero <manutero@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manutero/js.pdf/issues"
+  },
+  "homepage": "https://github.com/manutero/js.pdf#readme",
+  "devDependencies": {
+    "chai": "3.5.0",
+    "mocha": "3.0.2"
+  },
+  "dependencies": {
+    "pdfkit": "0.8.0"
+  }
+}
