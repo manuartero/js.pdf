@@ -41,10 +41,11 @@ function writeInPdf(doc, item) {
   if (isBaseCase(item)) {
     return baseCase(doc, item);
   }
-  Object.keys(item).forEach(key => {
+  Object.keys(item).forEach((key) => {
     printTitle(doc, key);
     writeInPdf(doc, item[key]);
   });
+  return undefined;
 }
 
 function isBaseCase(v) {

@@ -4,8 +4,9 @@
   "description": "Print js objects to pdf files",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "test": "node_modules/.bin/mocha ./**/*.spec.js"
+    "start": "node src/main.js",
+    "test": "mocha src/**/*.spec.js",
+    "lint": "eslint src; exit 0"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,15 @@
     "@types/mocha": "2.2.32",
     "@types/pdfkit": "^0.7.31",
     "chai": "3.5.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
     "mocha": "3.0.2"
   },
   "dependencies": {
+    "eslint": "^3.7.1",
     "pdfkit": "0.8.0"
   }
 }

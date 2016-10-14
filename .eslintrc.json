@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb",
+    "installedESLint": true,
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "prefer-const": 0,
+        "comma-dangle": 0,
+        "no-use-before-define": 0,
+        "import/no-extraneous-dependencies": 0
+    }
+}

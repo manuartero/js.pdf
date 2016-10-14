@@ -1,6 +1,4 @@
-/* jshint node: true */
-'use strict';
-
+/* global describe it */
 const expect = require('chai').expect;
 const main = require('./main');
 
