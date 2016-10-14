@@ -1,3 +1,5 @@
+'use strict';
+
 const createPdf = require('./create_pdf');
 const fs = require('fs');
 
@@ -8,7 +10,14 @@ function foo() {
     aSecond: ['dasdasd', 'dasdasd', 'dasasd'],
     aThird: 'dasdasdasdasdas',
     aFourth: {
-      aFitthTitle: 'as'
+      aFitthTitle: 'as',
+      another: {
+        ggggg: {
+          hhhhhhh: {
+            r: 4
+          }
+        }
+      }
     }
   };
   let readableStream = createPdf(obj);
