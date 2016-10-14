@@ -1,7 +1,6 @@
 'use strict';
 
 const createPdf = require('./create_pdf');
-const fs = require('fs');
 
 
 function foo() {
@@ -20,9 +19,8 @@ function foo() {
       }
     }
   };
-  let readableStream = createPdf(obj);
-  let writeStream = fs.createWriteStream('./test/a.pdf');
-  readableStream.pipe(writeStream);
+
+  createPdf(obj).toFile('./test/b.pdf');
 }
 
 

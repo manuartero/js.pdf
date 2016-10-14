@@ -2,6 +2,7 @@
 
 const PDFDocument = require('pdfkit');
 const CSS = require('./default_css');
+const Wrapper = require('./wrapper');
 
 
 module.exports = createPdf;
@@ -14,7 +15,7 @@ function createPdf(obj) {
   let doc = new PDFDocument();
   writeInPdf(doc, obj);
   doc.end();
-  return doc;
+  return new Wrapper(doc);
 }
 
 
