@@ -43,3 +43,4 @@ typings
 
 # project dev folders
 test
+.vscode

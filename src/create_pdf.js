@@ -1,56 +1,72 @@
 'use strict';
 
+const _ = require('lodash');
 const PDFDocument = require('pdfkit');
-const CSS = require('./default_css');
+const defaultCss = require('./default_css');
 const Wrapper = require('./wrapper');
+const utils = require('./utils');
+
+
+/**
+ * @type {PDFKit.PDFDocument}
+ */
+let doc;
+
+/**
+ *
+ */
+let CSS;
+
+let debug = true;
 
 
 module.exports = createPdf;
 
 /**
  * @param {Object} obj
+ * @param {Object=} opt
  */
-function createPdf(obj) {
-  // TODO null input
-  let doc = new PDFDocument();
-  writeInPdf(doc, obj);
+function createPdf(obj, opt) {
+  if (!obj) {
+    return undefined;
+  }
+  CSS = _.merge({}, defaultCss, opt);
+  if (debug) { console.dir(CSS); }
+  doc = new PDFDocument();
+  writeInPdf(obj);
   doc.end();
   return new Wrapper(doc);
 }
 
 
-/**
- * @param {PDFKit.PDFDocument} doc
- * @param {Object} item
- * @param {number=} depth
- */
-function writeInPdf(doc, item, depth = 1) {
-  if (isBaseCase(item)) {
-    return baseCase(doc, item);
+function writeInPdf(item, depth = 1) {
+  if (_isBaseCase(item)) {
+    return baseCase(item);
   }
   Object.keys(item).forEach((key) => {
-    printTitle(doc, key, depth);
-    writeInPdf(doc, item[key], depth + 1);
+    printTitle(key, depth);
+    writeInPdf(item[key], depth + 1);
   });
   return undefined;
 }
 
 
-function isBaseCase(v) {
-  return isString(v) || isArray(v);
+function _isBaseCase(v) {
+  return utils.isString(v) || utils.isArray(v) || utils.isNumber(v);
 }
 
 
 /**
- * @param {PDFKit.PDFDocument} doc
  * @param {Array<string>} v
  */
-function baseCase(doc, v) {
+function baseCase(v) {
+  if (debug) { console.log('p'); }
   doc.fontSize(CSS.p.fontSize);
-  if (isString(v)) {
+  doc.fillColor(CSS.p.color);
+  if (utils.isString(v) || utils.isNumber(v)) {
     doc.text(v);
   }
-  if (isArray(v)) {
+  if (utils.isArray(v)) {
     for (let item of v) {
       doc.text(item);
     }
@@ -59,22 +75,14 @@ function baseCase(doc, v) {
 
 
 /**
- * @param {PDFKit.PDFDocument} doc
  * @param {string} title
  * @param {number} depth
  */
-function printTitle(doc, title, depth) {
+function printTitle(title, depth) {
   // FIXME magic number
   let heading = depth > 3 ? 'h3' : `h${depth}`;
+  if (debug) { console.log(heading); }
+  doc.fillColor(CSS[heading].color);
   doc.fontSize(CSS[heading].fontSize);
-  doc.text(title);
-}
-
-
-function isString(v) {
-  return Object.prototype.toString.call(v) === '[object String]';
-}
-
-function isArray(v) {
-  return Object.prototype.toString.call(v) === '[object Array]';
+  doc.text(utils.humanize(title));
 }

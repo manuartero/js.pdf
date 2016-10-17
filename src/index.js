@@ -5,16 +5,13 @@ const createPdf = require('./create_pdf');
 
 function foo() {
   let obj = {
-    aTitle: 'Hola',
-    aSecond: ['dasdasd', 'dasdasd', 'dasasd'],
-    aThird: 'dasdasdasdasdas',
-    aFourth: {
-      aFitthTitle: 'as',
-      another: {
-        ggggg: {
-          hhhhhhh: {
-            r: 4
-          }
+    aFirstLevelTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    anotherFirstLevelTitle: ['First item', 'Second item', 'Third item'],
+    anImportantParagraph: {
+      aSubTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      aSecondSubTitle: {
+        innerHeading: {
+          value: 42
         }
       }
     }
