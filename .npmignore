@@ -1,0 +1,8 @@
+#tests
+coverage
+
+#linter
+.eslintrc*
+
+#editor settings
+.vscode
