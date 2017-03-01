@@ -2,11 +2,11 @@
   "name": "js.pdf",
   "version": "0.0.1",
   "description": "Print js objects to pdf files",
-  "main": "main.js",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "mocha src/**/*.spec.js",
-    "lint": "eslint src; exit 0"
+    "start": "node examples/index.js",
+    "test": "mocha 'lib/**/*.spec.js'",
+    "lint": "eslint lib; exit 0"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,6 @@
     "mocha": "3.0.2"
   },
   "dependencies": {
-    "eslint": "3.7.1",
     "lodash": "4.16.4",
     "pdfkit": "0.8.0"
   }
